@@ -17,10 +17,17 @@ David
 Proposed Timetable:
 
 November 14 --> Finish gathering raw sound data (recordings or movies)
+
 November 18 --> Finish creating software to filter the data
+
 November 21 --> Progress through the presentation and written aspects of the project
+
 November 28 --> Finish the presentation and written aspects entirely
+
 December 01 --> Finish any further refining and revising
+
 December 02 --> Submit project
+
 December 05 --> Presentation Day
+
 December 07 --> Presentation Day
