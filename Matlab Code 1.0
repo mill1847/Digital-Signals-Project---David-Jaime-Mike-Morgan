@@ -62,7 +62,7 @@ ylabel('dB')
 ampShifter = BaseSignal;
 for i=1:(length(ampShifter)-2)
     if (abs(ampShifter(i)) < 0.03) 
-        ampShifter(i) = ampShifter(+1);
+        ampShifter(i) = ampShifter(i+1);
     end
 end
 
@@ -83,7 +83,7 @@ A = [0 1 0]; % Bandpass
 dev = [0.01 10^(0.1/20)-1 0.01]; 
 [M,Wn,beta,typ] = kaiserord(F,A,dev,Fs);
 b = fir1(M,Wn,typ,kaiser(M+1,beta),'noscale');
-rangeFilter = filter (b,1,y);
+rangeFilter = filter (b,1,basesignal);
 
 subplot(2,3,4)
 plot(rangeFilter)
