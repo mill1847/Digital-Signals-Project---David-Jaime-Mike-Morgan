@@ -1,0 +1,59 @@
+[y, Fs] = audioread('recording-20161127-151212.mp3'); %Load MP3
+% This is the whitener code, 
+% It does not isolate the background effectively
+ampFilter = y;
+for i=1:(length(ampFilter)-1)
+    if (abs(ampFilter(i)) < 0.03) 
+        ampFilter(i) = 0;
+    end
+end
+SSampFilter = smooth (ampFilter);
+
+subplot(2,3,1)
+plot(y)
+title('Source MP3 File')
+
+subplot(2,3,2)
+plot(ampFilter)
+title('MP3 Filtered via Amplitude Whitener')
+subplot(2,3,3)
+plot(SSampFilter)
+title('MP3 Filtered via Amplitude Whitener and Smoothed')
+F = [50*2*pi 85*2*pi 200*2*pi 300*2*pi];
+% A = [1 0 1] % Bandstop
+A = [0 1 0]; % Bandpass
+dev = [0.01 10^(0.1/20)-1 0.01]; 
+[M,Wn,beta,typ] = kaiserord(F,A,dev,Fs);
+b = fir1(M,Wn,typ,kaiser(M+1,beta),'noscale');
+
+rangeFilter = filter (b,1,y);
+
+fftRangeFilter = fft(rangeFilter);
+
+
+subplot(2,3,5)
+plot(rangeFilter)
+title('MP3 Filtered from .3kHz to 3kHz')
+
+fftAmpFilter = fft(ampFilter);
+subplot(2,3,4)
+plot (fftAmpFilter)
+title('Fourier of Whitened MP3')
+
+
+
+rangeAmpFilter = rangeFilter;
+
+for i=2:(length(rangeAmpFilter)-2)
+    if (abs(rangeAmpFilter(i)) < 0.02) 
+        rangeAmpFilter(i) = rangeAmpFilter(i+1);
+    end
+end
+
+subplot(2, 3, 6)
+plot(rangeAmpFilter)
+title('rangeAmpFilter')
+
+
+
+
