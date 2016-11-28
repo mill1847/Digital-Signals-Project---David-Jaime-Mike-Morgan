@@ -125,4 +125,4 @@ ylabel('dB')
 % dev = [0.01 10^(0.1/20)-1 0.01]; 
 % [M,Wn,beta,typ] = kaiserord(F,A,dev,Fs);
 % b = fir1(M,Wn,typ,kaiser(M+1,beta),'noscale');
-% rangeFilter = filter (b,1,y);
+% rangeFilter = filter (b,1,basesignal);
