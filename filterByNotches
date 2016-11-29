@@ -1,0 +1,610 @@
+function filteredSignal = filterByNotches(BaseSignal, Fs)
+
+notchFilter = BaseSignal;
+A = [1 0 1];
+dev = [0.01 10^(0.1/20)-1 0.01];
+
+F0 = [15.350999999999999 15.850999999999999 16.851 17.351];
+[M0,Wn0,beta0,typ0] = kaiserord(F0,A,dev,Fs);
+b0 = fir1(M0,Wn0,typ0,kaiser(M0+1,beta0),'noscale');
+notchFilter = filter (b0,1,notchFilter);
+
+F1 = [16.324 16.824 17.824 18.324];
+[M1,Wn1,beta1,typ1] = kaiserord(F1,A,dev,Fs);
+b1 = fir1(M1,Wn1,typ1,kaiser(M1+1,beta1),'noscale');
+notchFilter = filter (b1,1,notchFilter);
+
+F2 = [17.354 17.854 18.854 19.354];
+[M2,Wn2,beta2,typ2] = kaiserord(F2,A,dev,Fs);
+b2 = fir1(M2,Wn2,typ2,kaiser(M2+1,beta2),'noscale');
+notchFilter = filter (b2,1,notchFilter);
+
+F3 = [18.445 18.945 19.945 20.445];
+[M3,Wn3,beta3,typ3] = kaiserord(F3,A,dev,Fs);
+b3 = fir1(M3,Wn3,typ3,kaiser(M3+1,beta3),'noscale');
+notchFilter = filter (b3,1,notchFilter);
+
+F4 = [19.601 20.101 21.101 21.601];
+[M4,Wn4,beta4,typ4] = kaiserord(F4,A,dev,Fs);
+b4 = fir1(M4,Wn4,typ4,kaiser(M4+1,beta4),'noscale');
+notchFilter = filter (b4,1,notchFilter);
+
+F5 = [20.827 21.327 22.327 22.827];
+[M5,Wn5,beta5,typ5] = kaiserord(F5,A,dev,Fs);
+b5 = fir1(M5,Wn5,typ5,kaiser(M5+1,beta5),'noscale');
+notchFilter = filter (b5,1,notchFilter);
+
+F6 = [22.124 22.624 23.624 24.124];
+[M6,Wn6,beta6,typ6] = kaiserord(F6,A,dev,Fs);
+b6 = fir1(M6,Wn6,typ6,kaiser(M6+1,beta6),'noscale');
+notchFilter = filter (b6,1,notchFilter);
+
+F7 = [23.499 23.999 24.999 25.499];
+[M7,Wn7,beta7,typ7] = kaiserord(F7,A,dev,Fs);
+b7 = fir1(M7,Wn7,typ7,kaiser(M7+1,beta7),'noscale');
+notchFilter = filter (b7,1,notchFilter);
+
+F8 = [24.956 25.456 26.456 26.956];
+[M8,Wn8,beta8,typ8] = kaiserord(F8,A,dev,Fs);
+b8 = fir1(M8,Wn8,typ8,kaiser(M8+1,beta8),'noscale');
+notchFilter = filter (b8,1,notchFilter);
+
+F9 = [26.5 27.0 28.0 28.5];
+[M9,Wn9,beta9,typ9] = kaiserord(F9,A,dev,Fs);
+b9 = fir1(M9,Wn9,typ9,kaiser(M9+1,beta9),'noscale');
+notchFilter = filter (b9,1,notchFilter);
+
+F10 = [28.135 28.635 29.635 30.135];
+[M10,Wn10,beta10,typ10] = kaiserord(F10,A,dev,Fs);
+b10 = fir1(M10,Wn10,typ10,kaiser(M10+1,beta10),'noscale');
+notchFilter = filter (b10,1,notchFilter);
+
+F11 = [29.868 30.368 31.368 31.868];
+[M11,Wn11,beta11,typ11] = kaiserord(F11,A,dev,Fs);
+b11 = fir1(M11,Wn11,typ11,kaiser(M11+1,beta11),'noscale');
+notchFilter = filter (b11,1,notchFilter);
+
+F12 = [31.703000000000003 32.203 33.203 33.703];
+[M12,Wn12,beta12,typ12] = kaiserord(F12,A,dev,Fs);
+b12 = fir1(M12,Wn12,typ12,kaiser(M12+1,beta12),'noscale');
+notchFilter = filter (b12,1,notchFilter);
+
+F13 = [33.648 34.148 35.148 35.648];
+[M13,Wn13,beta13,typ13] = kaiserord(F13,A,dev,Fs);
+b13 = fir1(M13,Wn13,typ13,kaiser(M13+1,beta13),'noscale');
+notchFilter = filter (b13,1,notchFilter);
+
+F14 = [35.708 36.208 37.208 37.708];
+[M14,Wn14,beta14,typ14] = kaiserord(F14,A,dev,Fs);
+b14 = fir1(M14,Wn14,typ14,kaiser(M14+1,beta14),'noscale');
+notchFilter = filter (b14,1,notchFilter);
+
+F15 = [37.891 38.391 39.391 39.891];
+[M15,Wn15,beta15,typ15] = kaiserord(F15,A,dev,Fs);
+b15 = fir1(M15,Wn15,typ15,kaiser(M15+1,beta15),'noscale');
+notchFilter = filter (b15,1,notchFilter);
+
+F16 = [40.203 40.703 41.703 42.203];
+[M16,Wn16,beta16,typ16] = kaiserord(F16,A,dev,Fs);
+b16 = fir1(M16,Wn16,typ16,kaiser(M16+1,beta16),'noscale');
+notchFilter = filter (b16,1,notchFilter);
+
+F17 = [42.654 43.154 44.154 44.654];
+[M17,Wn17,beta17,typ17] = kaiserord(F17,A,dev,Fs);
+b17 = fir1(M17,Wn17,typ17,kaiser(M17+1,beta17),'noscale');
+notchFilter = filter (b17,1,notchFilter);
+
+F18 = [45.249 45.749 46.749 47.249];
+[M18,Wn18,beta18,typ18] = kaiserord(F18,A,dev,Fs);
+b18 = fir1(M18,Wn18,typ18,kaiser(M18+1,beta18),'noscale');
+notchFilter = filter (b18,1,notchFilter);
+
+F19 = [47.999 48.499 49.499 49.999];
+[M19,Wn19,beta19,typ19] = kaiserord(F19,A,dev,Fs);
+b19 = fir1(M19,Wn19,typ19,kaiser(M19+1,beta19),'noscale');
+notchFilter = filter (b19,1,notchFilter);
+
+F20 = [50.913 51.413 52.413 52.913];
+[M20,Wn20,beta20,typ20] = kaiserord(F20,A,dev,Fs);
+b20 = fir1(M20,Wn20,typ20,kaiser(M20+1,beta20),'noscale');
+notchFilter = filter (b20,1,notchFilter);
+
+F21 = [54.0 54.5 55.5 56.0];
+[M21,Wn21,beta21,typ21] = kaiserord(F21,A,dev,Fs);
+b21 = fir1(M21,Wn21,typ21,kaiser(M21+1,beta21),'noscale');
+notchFilter = filter (b21,1,notchFilter);
+
+F22 = [57.27 57.77 58.77 59.27];
+[M22,Wn22,beta22,typ22] = kaiserord(F22,A,dev,Fs);
+b22 = fir1(M22,Wn22,typ22,kaiser(M22+1,beta22),'noscale');
+notchFilter = filter (b22,1,notchFilter);
+
+F23 = [60.735 61.235 62.235 62.735];
+[M23,Wn23,beta23,typ23] = kaiserord(F23,A,dev,Fs);
+b23 = fir1(M23,Wn23,typ23,kaiser(M23+1,beta23),'noscale');
+notchFilter = filter (b23,1,notchFilter);
+
+F24 = [64.406 64.906 65.906 66.406];
+[M24,Wn24,beta24,typ24] = kaiserord(F24,A,dev,Fs);
+b24 = fir1(M24,Wn24,typ24,kaiser(M24+1,beta24),'noscale');
+notchFilter = filter (b24,1,notchFilter);
+
+F25 = [68.296 68.796 69.796 70.296];
+[M25,Wn25,beta25,typ25] = kaiserord(F25,A,dev,Fs);
+b25 = fir1(M25,Wn25,typ25,kaiser(M25+1,beta25),'noscale');
+notchFilter = filter (b25,1,notchFilter);
+
+F26 = [72.416 72.916 73.916 74.416];
+[M26,Wn26,beta26,typ26] = kaiserord(F26,A,dev,Fs);
+b26 = fir1(M26,Wn26,typ26,kaiser(M26+1,beta26),'noscale');
+notchFilter = filter (b26,1,notchFilter);
+
+F27 = [76.782 77.282 78.282 78.782];
+[M27,Wn27,beta27,typ27] = kaiserord(F27,A,dev,Fs);
+b27 = fir1(M27,Wn27,typ27,kaiser(M27+1,beta27),'noscale');
+notchFilter = filter (b27,1,notchFilter);
+
+F28 = [81.407 81.907 82.907 83.407];
+[M28,Wn28,beta28,typ28] = kaiserord(F28,A,dev,Fs);
+b28 = fir1(M28,Wn28,typ28,kaiser(M28+1,beta28),'noscale');
+notchFilter = filter (b28,1,notchFilter);
+
+F29 = [86.307 86.807 87.807 88.307];
+[M29,Wn29,beta29,typ29] = kaiserord(F29,A,dev,Fs);
+b29 = fir1(M29,Wn29,typ29,kaiser(M29+1,beta29),'noscale');
+notchFilter = filter (b29,1,notchFilter);
+
+F30 = [91.499 91.999 92.999 93.499];
+[M30,Wn30,beta30,typ30] = kaiserord(F30,A,dev,Fs);
+b30 = fir1(M30,Wn30,typ30,kaiser(M30+1,beta30),'noscale');
+notchFilter = filter (b30,1,notchFilter);
+
+F31 = [96.999 97.499 98.499 98.999];
+[M31,Wn31,beta31,typ31] = kaiserord(F31,A,dev,Fs);
+b31 = fir1(M31,Wn31,typ31,kaiser(M31+1,beta31),'noscale');
+notchFilter = filter (b31,1,notchFilter);
+
+F32 = [102.826 103.326 104.326 104.826];
+[M32,Wn32,beta32,typ32] = kaiserord(F32,A,dev,Fs);
+b32 = fir1(M32,Wn32,typ32,kaiser(M32+1,beta32),'noscale');
+notchFilter = filter (b32,1,notchFilter);
+
+F33 = [109.0 109.5 110.5 111.0];
+[M33,Wn33,beta33,typ33] = kaiserord(F33,A,dev,Fs);
+b33 = fir1(M33,Wn33,typ33,kaiser(M33+1,beta33),'noscale');
+notchFilter = filter (b33,1,notchFilter);
+
+F34 = [115.541 116.041 117.041 117.541];
+[M34,Wn34,beta34,typ34] = kaiserord(F34,A,dev,Fs);
+b34 = fir1(M34,Wn34,typ34,kaiser(M34+1,beta34),'noscale');
+notchFilter = filter (b34,1,notchFilter);
+
+F35 = [122.471 122.971 123.971 124.471];
+[M35,Wn35,beta35,typ35] = kaiserord(F35,A,dev,Fs);
+b35 = fir1(M35,Wn35,typ35,kaiser(M35+1,beta35),'noscale');
+notchFilter = filter (b35,1,notchFilter);
+
+F36 = [129.813 130.313 131.313 131.813];
+[M36,Wn36,beta36,typ36] = kaiserord(F36,A,dev,Fs);
+b36 = fir1(M36,Wn36,typ36,kaiser(M36+1,beta36),'noscale');
+notchFilter = filter (b36,1,notchFilter);
+
+F37 = [137.591 138.091 139.091 139.591];
+[M37,Wn37,beta37,typ37] = kaiserord(F37,A,dev,Fs);
+b37 = fir1(M37,Wn37,typ37,kaiser(M37+1,beta37),'noscale');
+notchFilter = filter (b37,1,notchFilter);
+
+F38 = [145.832 146.332 147.332 147.832];
+[M38,Wn38,beta38,typ38] = kaiserord(F38,A,dev,Fs);
+b38 = fir1(M38,Wn38,typ38,kaiser(M38+1,beta38),'noscale');
+notchFilter = filter (b38,1,notchFilter);
+
+F39 = [154.563 155.063 156.063 156.563];
+[M39,Wn39,beta39,typ39] = kaiserord(F39,A,dev,Fs);
+b39 = fir1(M39,Wn39,typ39,kaiser(M39+1,beta39),'noscale');
+notchFilter = filter (b39,1,notchFilter);
+
+F40 = [163.814 164.314 165.314 165.814];
+[M40,Wn40,beta40,typ40] = kaiserord(F40,A,dev,Fs);
+b40 = fir1(M40,Wn40,typ40,kaiser(M40+1,beta40),'noscale');
+notchFilter = filter (b40,1,notchFilter);
+
+F41 = [173.614 174.114 175.114 175.614];
+[M41,Wn41,beta41,typ41] = kaiserord(F41,A,dev,Fs);
+b41 = fir1(M41,Wn41,typ41,kaiser(M41+1,beta41),'noscale');
+notchFilter = filter (b41,1,notchFilter);
+
+F42 = [183.997 184.497 185.497 185.997];
+[M42,Wn42,beta42,typ42] = kaiserord(F42,A,dev,Fs);
+b42 = fir1(M42,Wn42,typ42,kaiser(M42+1,beta42),'noscale');
+notchFilter = filter (b42,1,notchFilter);
+
+F43 = [194.998 195.498 196.498 196.998];
+[M43,Wn43,beta43,typ43] = kaiserord(F43,A,dev,Fs);
+b43 = fir1(M43,Wn43,typ43,kaiser(M43+1,beta43),'noscale');
+notchFilter = filter (b43,1,notchFilter);
+
+F44 = [206.652 207.152 208.152 208.652];
+[M44,Wn44,beta44,typ44] = kaiserord(F44,A,dev,Fs);
+b44 = fir1(M44,Wn44,typ44,kaiser(M44+1,beta44),'noscale');
+notchFilter = filter (b44,1,notchFilter);
+
+F45 = [219.0 219.5 220.5 221.0];
+[M45,Wn45,beta45,typ45] = kaiserord(F45,A,dev,Fs);
+b45 = fir1(M45,Wn45,typ45,kaiser(M45+1,beta45),'noscale');
+notchFilter = filter (b45,1,notchFilter);
+
+F46 = [232.082 232.582 233.582 234.082];
+[M46,Wn46,beta46,typ46] = kaiserord(F46,A,dev,Fs);
+b46 = fir1(M46,Wn46,typ46,kaiser(M46+1,beta46),'noscale');
+notchFilter = filter (b46,1,notchFilter);
+
+F47 = [245.942 246.442 247.442 247.942];
+[M47,Wn47,beta47,typ47] = kaiserord(F47,A,dev,Fs);
+b47 = fir1(M47,Wn47,typ47,kaiser(M47+1,beta47),'noscale');
+notchFilter = filter (b47,1,notchFilter);
+
+F48 = [260.626 261.126 262.126 262.626];
+[M48,Wn48,beta48,typ48] = kaiserord(F48,A,dev,Fs);
+b48 = fir1(M48,Wn48,typ48,kaiser(M48+1,beta48),'noscale');
+notchFilter = filter (b48,1,notchFilter);
+
+F49 = [276.183 276.683 277.683 278.183];
+[M49,Wn49,beta49,typ49] = kaiserord(F49,A,dev,Fs);
+b49 = fir1(M49,Wn49,typ49,kaiser(M49+1,beta49),'noscale');
+notchFilter = filter (b49,1,notchFilter);
+
+F50 = [292.665 293.165 294.165 294.665];
+[M50,Wn50,beta50,typ50] = kaiserord(F50,A,dev,Fs);
+b50 = fir1(M50,Wn50,typ50,kaiser(M50+1,beta50),'noscale');
+notchFilter = filter (b50,1,notchFilter);
+
+F51 = [310.127 310.627 311.627 312.127];
+[M51,Wn51,beta51,typ51] = kaiserord(F51,A,dev,Fs);
+b51 = fir1(M51,Wn51,typ51,kaiser(M51+1,beta51),'noscale');
+notchFilter = filter (b51,1,notchFilter);
+
+F52 = [328.628 329.128 330.128 330.628];
+[M52,Wn52,beta52,typ52] = kaiserord(F52,A,dev,Fs);
+b52 = fir1(M52,Wn52,typ52,kaiser(M52+1,beta52),'noscale');
+notchFilter = filter (b52,1,notchFilter);
+
+F53 = [348.228 348.728 349.728 350.228];
+[M53,Wn53,beta53,typ53] = kaiserord(F53,A,dev,Fs);
+b53 = fir1(M53,Wn53,typ53,kaiser(M53+1,beta53),'noscale');
+notchFilter = filter (b53,1,notchFilter);
+
+F54 = [368.994 369.494 370.494 370.994];
+[M54,Wn54,beta54,typ54] = kaiserord(F54,A,dev,Fs);
+b54 = fir1(M54,Wn54,typ54,kaiser(M54+1,beta54),'noscale');
+notchFilter = filter (b54,1,notchFilter);
+
+F55 = [390.995 391.495 392.495 392.995];
+[M55,Wn55,beta55,typ55] = kaiserord(F55,A,dev,Fs);
+b55 = fir1(M55,Wn55,typ55,kaiser(M55+1,beta55),'noscale');
+notchFilter = filter (b55,1,notchFilter);
+
+F56 = [414.305 414.805 415.805 416.305];
+[M56,Wn56,beta56,typ56] = kaiserord(F56,A,dev,Fs);
+b56 = fir1(M56,Wn56,typ56,kaiser(M56+1,beta56),'noscale');
+notchFilter = filter (b56,1,notchFilter);
+
+F57 = [439.0 439.5 440.5 441.0];
+[M57,Wn57,beta57,typ57] = kaiserord(F57,A,dev,Fs);
+b57 = fir1(M57,Wn57,typ57,kaiser(M57+1,beta57),'noscale');
+notchFilter = filter (b57,1,notchFilter);
+
+F58 = [465.164 465.664 466.664 467.164];
+[M58,Wn58,beta58,typ58] = kaiserord(F58,A,dev,Fs);
+b58 = fir1(M58,Wn58,typ58,kaiser(M58+1,beta58),'noscale');
+notchFilter = filter (b58,1,notchFilter);
+
+F59 = [492.883 493.383 494.383 494.883];
+[M59,Wn59,beta59,typ59] = kaiserord(F59,A,dev,Fs);
+b59 = fir1(M59,Wn59,typ59,kaiser(M59+1,beta59),'noscale');
+notchFilter = filter (b59,1,notchFilter);
+
+F60 = [522.251 522.751 523.751 524.251];
+[M60,Wn60,beta60,typ60] = kaiserord(F60,A,dev,Fs);
+b60 = fir1(M60,Wn60,typ60,kaiser(M60+1,beta60),'noscale');
+notchFilter = filter (b60,1,notchFilter);
+
+F61 = [553.365 553.865 554.865 555.365];
+[M61,Wn61,beta61,typ61] = kaiserord(F61,A,dev,Fs);
+b61 = fir1(M61,Wn61,typ61,kaiser(M61+1,beta61),'noscale');
+notchFilter = filter (b61,1,notchFilter);
+
+F62 = [586.33 586.83 587.83 588.33];
+[M62,Wn62,beta62,typ62] = kaiserord(F62,A,dev,Fs);
+b62 = fir1(M62,Wn62,typ62,kaiser(M62+1,beta62),'noscale');
+notchFilter = filter (b62,1,notchFilter);
+
+F63 = [621.254 621.754 622.754 623.254];
+[M63,Wn63,beta63,typ63] = kaiserord(F63,A,dev,Fs);
+b63 = fir1(M63,Wn63,typ63,kaiser(M63+1,beta63),'noscale');
+notchFilter = filter (b63,1,notchFilter);
+
+F64 = [658.255 658.755 659.755 660.255];
+[M64,Wn64,beta64,typ64] = kaiserord(F64,A,dev,Fs);
+b64 = fir1(M64,Wn64,typ64,kaiser(M64+1,beta64),'noscale');
+notchFilter = filter (b64,1,notchFilter);
+
+F65 = [697.456 697.956 698.956 699.456];
+[M65,Wn65,beta65,typ65] = kaiserord(F65,A,dev,Fs);
+b65 = fir1(M65,Wn65,typ65,kaiser(M65+1,beta65),'noscale');
+notchFilter = filter (b65,1,notchFilter);
+
+F66 = [738.989 739.489 740.489 740.989];
+[M66,Wn66,beta66,typ66] = kaiserord(F66,A,dev,Fs);
+b66 = fir1(M66,Wn66,typ66,kaiser(M66+1,beta66),'noscale');
+notchFilter = filter (b66,1,notchFilter);
+
+F67 = [782.991 783.491 784.491 784.991];
+[M67,Wn67,beta67,typ67] = kaiserord(F67,A,dev,Fs);
+b67 = fir1(M67,Wn67,typ67,kaiser(M67+1,beta67),'noscale');
+notchFilter = filter (b67,1,notchFilter);
+
+F68 = [829.609 830.109 831.109 831.609];
+[M68,Wn68,beta68,typ68] = kaiserord(F68,A,dev,Fs);
+b68 = fir1(M68,Wn68,typ68,kaiser(M68+1,beta68),'noscale');
+notchFilter = filter (b68,1,notchFilter);
+
+F69 = [879.0 879.5 880.5 881.0];
+[M69,Wn69,beta69,typ69] = kaiserord(F69,A,dev,Fs);
+b69 = fir1(M69,Wn69,typ69,kaiser(M69+1,beta69),'noscale');
+notchFilter = filter (b69,1,notchFilter);
+
+F70 = [931.328 931.828 932.828 933.328];
+[M70,Wn70,beta70,typ70] = kaiserord(F70,A,dev,Fs);
+b70 = fir1(M70,Wn70,typ70,kaiser(M70+1,beta70),'noscale');
+notchFilter = filter (b70,1,notchFilter);
+
+F71 = [986.767 987.267 988.267 988.767];
+[M71,Wn71,beta71,typ71] = kaiserord(F71,A,dev,Fs);
+b71 = fir1(M71,Wn71,typ71,kaiser(M71+1,beta71),'noscale');
+notchFilter = filter (b71,1,notchFilter);
+
+F72 = [1045.502 1046.002 1047.002 1047.502];
+[M72,Wn72,beta72,typ72] = kaiserord(F72,A,dev,Fs);
+b72 = fir1(M72,Wn72,typ72,kaiser(M72+1,beta72),'noscale');
+notchFilter = filter (b72,1,notchFilter);
+
+F73 = [1107.731 1108.231 1109.231 1109.731];
+[M73,Wn73,beta73,typ73] = kaiserord(F73,A,dev,Fs);
+b73 = fir1(M73,Wn73,typ73,kaiser(M73+1,beta73),'noscale');
+notchFilter = filter (b73,1,notchFilter);
+
+F74 = [1173.659 1174.159 1175.159 1175.659];
+[M74,Wn74,beta74,typ74] = kaiserord(F74,A,dev,Fs);
+b74 = fir1(M74,Wn74,typ74,kaiser(M74+1,beta74),'noscale');
+notchFilter = filter (b74,1,notchFilter);
+
+F75 = [1243.508 1244.008 1245.008 1245.508];
+[M75,Wn75,beta75,typ75] = kaiserord(F75,A,dev,Fs);
+b75 = fir1(M75,Wn75,typ75,kaiser(M75+1,beta75),'noscale');
+notchFilter = filter (b75,1,notchFilter);
+
+F76 = [1317.51 1318.01 1319.01 1319.51];
+[M76,Wn76,beta76,typ76] = kaiserord(F76,A,dev,Fs);
+b76 = fir1(M76,Wn76,typ76,kaiser(M76+1,beta76),'noscale');
+notchFilter = filter (b76,1,notchFilter);
+
+F77 = [1395.913 1396.413 1397.413 1397.913];
+[M77,Wn77,beta77,typ77] = kaiserord(F77,A,dev,Fs);
+b77 = fir1(M77,Wn77,typ77,kaiser(M77+1,beta77),'noscale');
+notchFilter = filter (b77,1,notchFilter);
+
+F78 = [1478.978 1479.478 1480.478 1480.978];
+[M78,Wn78,beta78,typ78] = kaiserord(F78,A,dev,Fs);
+b78 = fir1(M78,Wn78,typ78,kaiser(M78+1,beta78),'noscale');
+notchFilter = filter (b78,1,notchFilter);
+
+F79 = [1566.982 1567.482 1568.482 1568.982];
+[M79,Wn79,beta79,typ79] = kaiserord(F79,A,dev,Fs);
+b79 = fir1(M79,Wn79,typ79,kaiser(M79+1,beta79),'noscale');
+notchFilter = filter (b79,1,notchFilter);
+
+F80 = [1660.219 1660.719 1661.719 1662.219];
+[M80,Wn80,beta80,typ80] = kaiserord(F80,A,dev,Fs);
+b80 = fir1(M80,Wn80,typ80,kaiser(M80+1,beta80),'noscale');
+notchFilter = filter (b80,1,notchFilter);
+
+F81 = [1759.0 1759.5 1760.5 1761.0];
+[M81,Wn81,beta81,typ81] = kaiserord(F81,A,dev,Fs);
+b81 = fir1(M81,Wn81,typ81,kaiser(M81+1,beta81),'noscale');
+notchFilter = filter (b81,1,notchFilter);
+
+F82 = [1863.655 1864.155 1865.155 1865.655];
+[M82,Wn82,beta82,typ82] = kaiserord(F82,A,dev,Fs);
+b82 = fir1(M82,Wn82,typ82,kaiser(M82+1,beta82),'noscale');
+notchFilter = filter (b82,1,notchFilter);
+
+F83 = [1974.533 1975.033 1976.033 1976.533];
+[M83,Wn83,beta83,typ83] = kaiserord(F83,A,dev,Fs);
+b83 = fir1(M83,Wn83,typ83,kaiser(M83+1,beta83),'noscale');
+notchFilter = filter (b83,1,notchFilter);
+
+F84 = [2092.005 2092.505 2093.505 2094.005];
+[M84,Wn84,beta84,typ84] = kaiserord(F84,A,dev,Fs);
+b84 = fir1(M84,Wn84,typ84,kaiser(M84+1,beta84),'noscale');
+notchFilter = filter (b84,1,notchFilter);
+
+F85 = [2216.461 2216.961 2217.961 2218.461];
+[M85,Wn85,beta85,typ85] = kaiserord(F85,A,dev,Fs);
+b85 = fir1(M85,Wn85,typ85,kaiser(M85+1,beta85),'noscale');
+notchFilter = filter (b85,1,notchFilter);
+
+F86 = [2348.318 2348.818 2349.818 2350.318];
+[M86,Wn86,beta86,typ86] = kaiserord(F86,A,dev,Fs);
+b86 = fir1(M86,Wn86,typ86,kaiser(M86+1,beta86),'noscale');
+notchFilter = filter (b86,1,notchFilter);
+
+F87 = [2488.016 2488.516 2489.516 2490.016];
+[M87,Wn87,beta87,typ87] = kaiserord(F87,A,dev,Fs);
+b87 = fir1(M87,Wn87,typ87,kaiser(M87+1,beta87),'noscale');
+notchFilter = filter (b87,1,notchFilter);
+
+F88 = [2636.021 2636.521 2637.521 2638.021];
+[M88,Wn88,beta88,typ88] = kaiserord(F88,A,dev,Fs);
+b88 = fir1(M88,Wn88,typ88,kaiser(M88+1,beta88),'noscale');
+notchFilter = filter (b88,1,notchFilter);
+
+F89 = [2792.826 2793.326 2794.326 2794.826];
+[M89,Wn89,beta89,typ89] = kaiserord(F89,A,dev,Fs);
+b89 = fir1(M89,Wn89,typ89,kaiser(M89+1,beta89),'noscale');
+notchFilter = filter (b89,1,notchFilter);
+
+F90 = [2958.955 2959.455 2960.455 2960.955];
+[M90,Wn90,beta90,typ90] = kaiserord(F90,A,dev,Fs);
+b90 = fir1(M90,Wn90,typ90,kaiser(M90+1,beta90),'noscale');
+notchFilter = filter (b90,1,notchFilter);
+
+F91 = [3134.964 3135.464 3136.464 3136.964];
+[M91,Wn91,beta91,typ91] = kaiserord(F91,A,dev,Fs);
+b91 = fir1(M91,Wn91,typ91,kaiser(M91+1,beta91),'noscale');
+notchFilter = filter (b91,1,notchFilter);
+
+F92 = [3321.438 3321.938 3322.938 3323.438];
+[M92,Wn92,beta92,typ92] = kaiserord(F92,A,dev,Fs);
+b92 = fir1(M92,Wn92,typ92,kaiser(M92+1,beta92),'noscale');
+notchFilter = filter (b92,1,notchFilter);
+
+F93 = [3519.0 3519.5 3520.5 3521.0];
+[M93,Wn93,beta93,typ93] = kaiserord(F93,A,dev,Fs);
+b93 = fir1(M93,Wn93,typ93,kaiser(M93+1,beta93),'noscale');
+notchFilter = filter (b93,1,notchFilter);
+
+F94 = [3728.31 3728.81 3729.81 3730.31];
+[M94,Wn94,beta94,typ94] = kaiserord(F94,A,dev,Fs);
+b94 = fir1(M94,Wn94,typ94,kaiser(M94+1,beta94),'noscale');
+notchFilter = filter (b94,1,notchFilter);
+
+F95 = [3950.066 3950.566 3951.566 3952.066];
+[M95,Wn95,beta95,typ95] = kaiserord(F95,A,dev,Fs);
+b95 = fir1(M95,Wn95,typ95,kaiser(M95+1,beta95),'noscale');
+notchFilter = filter (b95,1,notchFilter);
+
+F96 = [4185.009 4185.509 4186.509 4187.009];
+[M96,Wn96,beta96,typ96] = kaiserord(F96,A,dev,Fs);
+b96 = fir1(M96,Wn96,typ96,kaiser(M96+1,beta96),'noscale');
+notchFilter = filter (b96,1,notchFilter);
+
+F97 = [4433.922 4434.422 4435.422 4435.922];
+[M97,Wn97,beta97,typ97] = kaiserord(F97,A,dev,Fs);
+b97 = fir1(M97,Wn97,typ97,kaiser(M97+1,beta97),'noscale');
+notchFilter = filter (b97,1,notchFilter);
+
+F98 = [4697.636 4698.136 4699.136 4699.636];
+[M98,Wn98,beta98,typ98] = kaiserord(F98,A,dev,Fs);
+b98 = fir1(M98,Wn98,typ98,kaiser(M98+1,beta98),'noscale');
+notchFilter = filter (b98,1,notchFilter);
+
+F99 = [4977.032 4977.532 4978.532 4979.032];
+[M99,Wn99,beta99,typ99] = kaiserord(F99,A,dev,Fs);
+b99 = fir1(M99,Wn99,typ99,kaiser(M99+1,beta99),'noscale');
+notchFilter = filter (b99,1,notchFilter);
+
+F100 = [5273.042 5273.542 5274.542 5275.042];
+[M100,Wn100,beta100,typ100] = kaiserord(F100,A,dev,Fs);
+b100 = fir1(M100,Wn100,typ100,kaiser(M100+1,beta100),'noscale');
+notchFilter = filter (b100,1,notchFilter);
+
+F101 = [5586.652 5587.152 5588.152 5588.652];
+[M101,Wn101,beta101,typ101] = kaiserord(F101,A,dev,Fs);
+b101 = fir1(M101,Wn101,typ101,kaiser(M101+1,beta101),'noscale');
+notchFilter = filter (b101,1,notchFilter);
+
+F102 = [5918.91 5919.41 5920.41 5920.91];
+[M102,Wn102,beta102,typ102] = kaiserord(F102,A,dev,Fs);
+b102 = fir1(M102,Wn102,typ102,kaiser(M102+1,beta102),'noscale');
+notchFilter = filter (b102,1,notchFilter);
+
+F103 = [6270.928 6271.428 6272.428 6272.928];
+[M103,Wn103,beta103,typ103] = kaiserord(F103,A,dev,Fs);
+b103 = fir1(M103,Wn103,typ103,kaiser(M103+1,beta103),'noscale');
+notchFilter = filter (b103,1,notchFilter);
+
+F104 = [6643.876 6644.376 6645.376 6645.876];
+[M104,Wn104,beta104,typ104] = kaiserord(F104,A,dev,Fs);
+b104 = fir1(M104,Wn104,typ104,kaiser(M104+1,beta104),'noscale');
+notchFilter = filter (b104,1,notchFilter);
+
+F105 = [7039.0 7039.5 7040.5 7041.0];
+[M105,Wn105,beta105,typ105] = kaiserord(F105,A,dev,Fs);
+b105 = fir1(M105,Wn105,typ105,kaiser(M105+1,beta105),'noscale');
+notchFilter = filter (b105,1,notchFilter);
+
+F106 = [7457.62 7458.12 7459.12 7459.62];
+[M106,Wn106,beta106,typ106] = kaiserord(F106,A,dev,Fs);
+b106 = fir1(M106,Wn106,typ106,kaiser(M106+1,beta106),'noscale');
+notchFilter = filter (b106,1,notchFilter);
+
+F107 = [7901.132 7901.632 7902.632 7903.132];
+[M107,Wn107,beta107,typ107] = kaiserord(F107,A,dev,Fs);
+b107 = fir1(M107,Wn107,typ107,kaiser(M107+1,beta107),'noscale');
+notchFilter = filter (b107,1,notchFilter);
+
+F108 = [8371.018 8371.518 8372.518 8373.018];
+[M108,Wn108,beta108,typ108] = kaiserord(F108,A,dev,Fs);
+b108 = fir1(M108,Wn108,typ108,kaiser(M108+1,beta108),'noscale');
+notchFilter = filter (b108,1,notchFilter);
+
+F109 = [8868.844 8869.344 8870.344 8870.844];
+[M109,Wn109,beta109,typ109] = kaiserord(F109,A,dev,Fs);
+b109 = fir1(M109,Wn109,typ109,kaiser(M109+1,beta109),'noscale');
+notchFilter = filter (b109,1,notchFilter);
+
+F110 = [9396.272 9396.772 9397.772 9398.272];
+[M110,Wn110,beta110,typ110] = kaiserord(F110,A,dev,Fs);
+b110 = fir1(M110,Wn110,typ110,kaiser(M110+1,beta110),'noscale');
+notchFilter = filter (b110,1,notchFilter);
+
+F111 = [9955.064 9955.564 9956.564 9957.064];
+[M111,Wn111,beta111,typ111] = kaiserord(F111,A,dev,Fs);
+b111 = fir1(M111,Wn111,typ111,kaiser(M111+1,beta111),'noscale');
+notchFilter = filter (b111,1,notchFilter);
+
+F112 = [10547.084 10547.584 10548.584 10549.084];
+[M112,Wn112,beta112,typ112] = kaiserord(F112,A,dev,Fs);
+b112 = fir1(M112,Wn112,typ112,kaiser(M112+1,beta112),'noscale');
+notchFilter = filter (b112,1,notchFilter);
+
+F113 = [11174.304 11174.804 11175.804 11176.304];
+[M113,Wn113,beta113,typ113] = kaiserord(F113,A,dev,Fs);
+b113 = fir1(M113,Wn113,typ113,kaiser(M113+1,beta113),'noscale');
+notchFilter = filter (b113,1,notchFilter);
+
+F114 = [11838.82 11839.32 11840.32 11840.82];
+[M114,Wn114,beta114,typ114] = kaiserord(F114,A,dev,Fs);
+b114 = fir1(M114,Wn114,typ114,kaiser(M114+1,beta114),'noscale');
+notchFilter = filter (b114,1,notchFilter);
+
+F115 = [12542.856 12543.356 12544.356 12544.856];
+[M115,Wn115,beta115,typ115] = kaiserord(F115,A,dev,Fs);
+b115 = fir1(M115,Wn115,typ115,kaiser(M115+1,beta115),'noscale');
+notchFilter = filter (b115,1,notchFilter);
+
+F116 = [13288.752 13289.252 13290.252 13290.752];
+[M116,Wn116,beta116,typ116] = kaiserord(F116,A,dev,Fs);
+b116 = fir1(M116,Wn116,typ116,kaiser(M116+1,beta116),'noscale');
+notchFilter = filter (b116,1,notchFilter);
+
+F117 = [14079.0 14079.5 14080.5 14081.0];
+[M117,Wn117,beta117,typ117] = kaiserord(F117,A,dev,Fs);
+b117 = fir1(M117,Wn117,typ117,kaiser(M117+1,beta117),'noscale');
+notchFilter = filter (b117,1,notchFilter);
+
+F118 = [14916.24 14916.74 14917.74 14918.24];
+[M118,Wn118,beta118,typ118] = kaiserord(F118,A,dev,Fs);
+b118 = fir1(M118,Wn118,typ118,kaiser(M118+1,beta118),'noscale');
+notchFilter = filter (b118,1,notchFilter);
+
+F119 = [15803.264 15803.764 15804.764 15805.264];
+[M119,Wn119,beta119,typ119] = kaiserord(F119,A,dev,Fs);
+b119 = fir1(M119,Wn119,typ119,kaiser(M119+1,beta119),'noscale');
+notchFilter = filter (b119,1,notchFilter);
+
+
+filteredSignal = notchFilter;
+end
+
