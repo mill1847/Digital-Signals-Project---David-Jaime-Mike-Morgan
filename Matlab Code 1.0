@@ -114,15 +114,14 @@ ylabel('dB')
 %   Filter range 85 Hz or above 200 Hz 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%To Be Programmed%
+% This code does not run effectively but it's coded properly.
+% When the ranges of filtering become too tight it causes MATLAB to hang.
 
-% I kind of think this one is unnecessary and a lot of work, we'll talk
-% about it tomorrow
+% notchFilter = filterByNotches(BaseSignal, Fs);
+% 
+% subplot(2,3,6)
+% plot(notchFilter)
+% title ( 'Frequency Filtered on Musical Notes' )
+% xlabel ('Time')
+% ylabel ('db')
 
-% F = [50*2*pi 85*2*pi 200*2*pi 300*2*pi];
-% A = [1 0 1]; % Bandstop
-% % A = [0 1 0]; % Bandpass
-% dev = [0.01 10^(0.1/20)-1 0.01]; 
-% [M,Wn,beta,typ] = kaiserord(F,A,dev,Fs);
-% b = fir1(M,Wn,typ,kaiser(M+1,beta),'noscale');
-% rangeFilter = filter (b,1,basesignal);
