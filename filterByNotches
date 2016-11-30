@@ -1,15 +1,17 @@
-function filteredSignal = filterByNotches(BaseSignal, Fs)
+function filteredSignal = filterByNotches(BaseSignal, Fs)     %Instantiates this code as a function
+                                                              %Please note: this code is very repetitive (we repeat the same methodology for creating BandStop filters 120 times)
+                                                              %             thus we will only comment the first iteration of that methodology but it is almost exactly the same
+                                                              
+notchFilter = BaseSignal;                                     %Copies the base signal into a new variable
+A = [1 0 1];                                                  %Sets all of the filters to be BandStop filters
+dev = [0.01 10^(0.1/20)-1 0.01];                              %Sets the ripple range on all filters
 
-notchFilter = BaseSignal;
-A = [1 0 1];
-dev = [0.01 10^(0.1/20)-1 0.01];
+F0 = [15.350999999999999 15.850999999999999 16.851 17.351];   %Defines the frequency of a musical note + or - 1 Hz that will be filtered out
+[M0,Wn0,beta0,typ0] = kaiserord(F0,A,dev,Fs);                 %Code that generates the variables necessary to generate a FIR filter
+b0 = fir1(M0,Wn0,typ0,kaiser(M0+1,beta0),'noscale');          %Code that generates a FIR filter and assigns it to a variable
+notchFilter = filter (b0,1,notchFilter);                      %Applies the FIR filter to the notchFilter variable
 
-F0 = [15.350999999999999 15.850999999999999 16.851 17.351];
-[M0,Wn0,beta0,typ0] = kaiserord(F0,A,dev,Fs);
-b0 = fir1(M0,Wn0,typ0,kaiser(M0+1,beta0),'noscale');
-notchFilter = filter (b0,1,notchFilter);
-
-F1 = [16.324 16.824 17.824 18.324];
+F1 = [16.324 16.824 17.824 18.324];                           %Repeats above until later comments
 [M1,Wn1,beta1,typ1] = kaiserord(F1,A,dev,Fs);
 b1 = fir1(M1,Wn1,typ1,kaiser(M1+1,beta1),'noscale');
 notchFilter = filter (b1,1,notchFilter);
@@ -605,6 +607,6 @@ b119 = fir1(M119,Wn119,typ119,kaiser(M119+1,beta119),'noscale');
 notchFilter = filter (b119,1,notchFilter);
 
 
-filteredSignal = notchFilter;
+filteredSignal = notchFilter;                                         %Outputs the final notchFilter signal from this function
 end
 
