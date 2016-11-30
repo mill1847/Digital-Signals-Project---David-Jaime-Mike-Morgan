@@ -84,7 +84,7 @@ A = [0 1 0]; % Bandpass                                 %Code that causes the fi
 dev = [0.01 10^(0.1/20)-1 0.01];                        %Code that designates the ripple range allowed in the filter
 [M,Wn,beta,typ] = kaiserord(F,A,dev,Fs);                %Code that generates the variables necessary to generate a FIR filter
 b = fir1(M,Wn,typ,kaiser(M+1,beta),'noscale');          %Code that generates a FIR filter and assigns it to a variable
-rangeFilter = filter (b,1,basesignal);                  %Applies the FIR filter to the BaseSignal and saves it into the variable rangeFilter
+rangeFilter = filter (b,1,BaseSignal);                  %Applies the FIR filter to the BaseSignal and saves it into the variable rangeFilter
 
 subplot(2,3,4)                                          %PLOT rangeFilter
 plot(rangeFilter)                                       %PLOT rangeFilter
