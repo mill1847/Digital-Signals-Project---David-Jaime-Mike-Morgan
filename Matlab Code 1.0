@@ -69,7 +69,7 @@ end                                         %Ends the for loop for traversal
 
 subplot(2,3,3)                              %PLOT ampShifter
 plot(ampShifter)                            %PLOT ampShifter
-title('Whitened Audio Signal')              %PLOT ampShifter
+title('Shifted Audio Signal (Non-Causal)')              %PLOT ampShifter
 xlabel('Time')                              %PLOT ampShifter
 ylabel('dB')                                %PLOT ampShifter
 
