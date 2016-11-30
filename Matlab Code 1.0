@@ -30,84 +30,85 @@
 %           To play a clip, enter 'sound( nameOfFile , Fs )' 
 %           To Stop a clip, enter 'clear sound'
 [BaseSignal, Fs] = audioread('recording-20161127-151212.mp3'); %Load MP3
-subplot(2,3,1)
-plot(BaseSignal)
-title('Base Audio Signal')
-xlabel('Time')
-ylabel('dB')
+
+subplot(2,3,1)                  %PLOT BASE SIGNAL
+plot(BaseSignal)                %PLOT BASE SIGNAL
+title('Base Audio Signal')      %PLOT BASE SIGNAL
+xlabel('Time')                  %PLOT BASE SIGNAL
+ylabel('dB')                    %PLOT BASE SIGNAL
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Low-Amplitude Whitener 
 %   Anything below 30 dB is set to 0
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-ampFilter = BaseSignal;
-for i=1:(length(ampFilter)-1)
-    if (abs(ampFilter(i)) < 0.03) 
-        ampFilter(i) = 0;
-    end
-end
+ampFilter = BaseSignal;                     %Copy BaseSignal into a new variable
+for i=1:(length(ampFilter)-1)               %Loop through each element of ampFilter using a for loop for linear traversal
+    if (abs(ampFilter(i)) < 0.03)           %Condtion to check if the amplitude of an element is below a certain threshold (0.03)
+        ampFilter(i) = 0;                   %Sets the amplitude equal to 0 if the condition is met
+    end                                     %Ends the if statement condition 
+end                                         %Ends the for loop for traversal 
 
-subplot(2,3,2)
-plot(ampFilter)
-title('Whitened Audio Signal')
-xlabel('Time')
-ylabel('dB')
+subplot(2,3,2)                              %PLOT THE ampFilter
+plot(ampFilter)                             %PLOT THE ampFilter
+title('Whitened Audio Signal')              %PLOT THE ampFilter
+xlabel('Time')                              %PLOT THE ampFilter
+ylabel('dB')                                %PLOT THE ampFilter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Low-Amplitude Filter (Non-Causal Shift) 
 %   Anything below 30 dB is set to the next occuring frequency
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-ampShifter = BaseSignal;
-for i=1:(length(ampShifter)-2)
-    if (abs(ampShifter(i)) < 0.03) 
-        ampShifter(i) = ampShifter(i+1);
-    end
-end
+ampShifter = BaseSignal;                    %Copy the base signal into a new variable 
+for i=1:(length(ampShifter)-2)              %Traverse linearly through ampShifter using a for loop
+    if (abs(ampShifter(i)) < 0.03)          %Condition to see if an element of ampshifter has an amplitude below a certain threshold
+        ampShifter(i) = ampShifter(i+1);    %If the condition is true, then the element will be overwritten by the previous element
+    end                                     %Ends the conditional statement
+end                                         %Ends the for loop for traversal
 
-subplot(2,3,3)
-plot(ampShifter)
-title('Whitened Audio Signal')
-xlabel('Time')
-ylabel('dB')
+subplot(2,3,3)                              %PLOT ampShifter
+plot(ampShifter)                            %PLOT ampShifter
+title('Whitened Audio Signal')              %PLOT ampShifter
+xlabel('Time')                              %PLOT ampShifter
+ylabel('dB')                                %PLOT ampShifter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Band Pass Filter 
-%   Filter range 85 Hz or above 200 Hz 
+%   Filter range 535 Hz or above 1255 Hz 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-F = [50*2*pi 85*2*pi 200*2*pi 300*2*pi];
-% A = [1 0 1] % Bandstop
-A = [0 1 0]; % Bandpass
-dev = [0.01 10^(0.1/20)-1 0.01]; 
-[M,Wn,beta,typ] = kaiserord(F,A,dev,Fs);
-b = fir1(M,Wn,typ,kaiser(M+1,beta),'noscale');
-rangeFilter = filter (b,1,basesignal);
+F = [50*2*pi 85*2*pi 200*2*pi 300*2*pi];                %Vector containing the boundaries of the filter (frequencies)
+% A = [1 0 1] % Bandstop                                %Code that causes the filter to become a Bandstop Filter rather than a BandPass -- Innactive
+A = [0 1 0]; % Bandpass                                 %Code that causes the filter to become a Bandpass Filter
+dev = [0.01 10^(0.1/20)-1 0.01];                        %Code that designates the ripple range allowed in the filter
+[M,Wn,beta,typ] = kaiserord(F,A,dev,Fs);                %Code that generates the variables necessary to generate a FIR filter
+b = fir1(M,Wn,typ,kaiser(M+1,beta),'noscale');          %Code that generates a FIR filter and assigns it to a variable
+rangeFilter = filter (b,1,basesignal);                  %Applies the FIR filter to the BaseSignal and saves it into the variable rangeFilter
 
-subplot(2,3,4)
-plot(rangeFilter)
-title('Filtered Audio Signal (85 Hz to 200 Hz)')
-xlabel('Time')
-ylabel('dB')
+subplot(2,3,4)                                          %PLOT rangeFilter
+plot(rangeFilter)                                       %PLOT rangeFilter
+title('Filtered Audio Signal (535 Hz to 1255 Hz)')      %PLOT rangeFilter
+xlabel('Time')                                          %PLOT rangeFilter       
+ylabel('dB')                                            %PLOT rangeFilter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Band Pass Filter with Low-Amplitude Filter (Non-Causal Shift) 
 %   Filter range 85 Hz or above 200 Hz 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-rangeAmpFilter = rangeFilter;
-for i=2:(length(rangeAmpFilter)-2)
-    if (abs(rangeAmpFilter(i)) < 0.02) 
-        rangeAmpFilter(i) = rangeAmpFilter(i+1);
-    end
-end
+rangeAmpFilter = rangeFilter;                           %Copies the rangeFilter variable into a new variable
+for i=2:(length(rangeAmpFilter)-2)                      %Traverses rangeAmpFilter linearly using a for loop
+    if (abs(rangeAmpFilter(i)) < 0.02)                  %Condition to check if an element of rangeAmpFilter are below a certain amplitude
+        rangeAmpFilter(i) = rangeAmpFilter(i+1);        %If the condition is met, then the element is set to the next value
+    end                                                 %Ends the conditional statement
+end                                                     %Ends the for loop traversal
 
-subplot(2,3,5)
-plot(rangeAmpFilter)
-title('Filtered Audio Signal (85 Hz to 200 Hz and Non-Causal Amplitude Filter)')
-xlabel('Time')
-ylabel('dB')
+subplot(2,3,5)                                                                          %Plots rangeAmpFilter
+plot(rangeAmpFilter)                                                                    %Plots rangeAmpFilter
+title('Filtered Audio Signal (85 Hz to 200 Hz and Non-Causal Amplitude Filter)')        %Plots rangeAmpFilter
+xlabel('Time')                                                                          %Plots rangeAmpFilter
+ylabel('dB')                                                                            %Plots rangeAmpFilter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Multi-Band Reject Filter (On Musical Note Frequencies) 
@@ -117,11 +118,10 @@ ylabel('dB')
 % This code does not run effectively but it's coded properly.
 % When the ranges of filtering become too tight it causes MATLAB to hang.
 
-% notchFilter = filterByNotches(BaseSignal, Fs);
+% notchFilter = filterByNotches(BaseSignal, Fs);        %Calls the filterByNotches function that applies a BandStop filter to frequencies that are in the first 10 octives of the musical spectrum
 % 
-% subplot(2,3,6)
-% plot(notchFilter)
-% title ( 'Frequency Filtered on Musical Notes' )
-% xlabel ('Time')
-% ylabel ('db')
-
+% subplot(2,3,6)                                        %Plots notchFilter
+% plot(notchFilter)                                     %Plots notchFilter
+% title ( 'Frequency Filtered on Musical Notes' )       %Plots notchFilter
+% xlabel ('Time')                                       %Plots notchFilter
+% ylabel ('db')                                         %Plots notchFilter
