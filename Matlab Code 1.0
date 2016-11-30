@@ -38,7 +38,7 @@ ylabel('dB')
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Low-Amplitude Whitener 
-%   Anything below 0.03 dB is set to 0
+%   Anything below 30 dB is set to 0
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ampFilter = BaseSignal;
@@ -56,7 +56,7 @@ ylabel('dB')
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Low-Amplitude Filter (Non-Causal Shift) 
-%   Anything below 0.03 dB is set to 0
+%   Anything below 30 dB is set to the next occuring frequency
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ampShifter = BaseSignal;
